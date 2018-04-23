@@ -4,8 +4,8 @@
   "description": "This is a server for t9 prediction web app.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./app/index.js",
-    "dev": "nodemon ./app/index.js",
+    "start": "node ./app/app.js",
+    "dev": "nodemon ./app/app.js",
     "precommit": "eslint ./**/*.js"
   },
   "repository": {
