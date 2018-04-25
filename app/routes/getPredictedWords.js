@@ -1,14 +1,16 @@
 const dictionary = require('./../dictionary');
 const { BAD_REQUEST_ERROR } = require('../constants')
+const { phraseDecode } = require('../utils')
 
 module.exports = (req, res) => {
   const { 
-    params: { phrase_length, phrase_letters },
+    params: { phrase_code },
     query: { list_length = 10 }
   } = req;
-  const searchRegexp = new RegExp(`\\b[${phrase_letters.toLowerCase()}]+\\b(?![,])`);
+  const phraseLettersCode = phraseDecode(phrase_code)
+  const searchRegexp = new RegExp(`\\b[${phraseLettersCode.toLowerCase()}]+\\b(?![,])`);
   const matchedWords = dictionary.filter(word => 
-    searchRegexp.test(word) && word.length === +phrase_length
+    searchRegexp.test(word) && word.length === +phrase_code.length
   );
   const wordsList = matchedWords.splice(0, list_length)
 
