@@ -13,8 +13,8 @@ const validationErrorHandler = (validator) => {
 
 const getWordsValidator = req => {
   req.checkParams('phrase_code')
-    .exists().withMessage('phrase_letters param is required')
-    .isAlpha().withMessage('phrase_letters should be a strin')
+    .exists().withMessage('phrase_code param is required')
+    .isInt().withMessage('phrase_code should be a number')
   req.checkQuery('list_length').exists()
     .isInt().withMessage('list_length should be a number')
 }
