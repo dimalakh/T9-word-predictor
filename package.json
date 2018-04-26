@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node ./app/app.js",
     "dev": "nodemon ./app/app.js",
+    "test": "jest",
     "precommit": "eslint ./**/*.js"
   },
   "repository": {
@@ -32,7 +33,9 @@
   "devDependencies": {
     "eslint": "^4.19.1",
     "eslint-plugin-node": "^6.0.1",
+    "hippie": "^0.5.1",
     "husky": "^0.14.3",
+    "jest": "^22.4.3",
     "nodemon": "^1.17.3"
   }
 }

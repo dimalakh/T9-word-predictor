@@ -1,8 +1,6 @@
 const phraseDecode = codes => {
     const letterCode = codes.split('').map(code => {
         switch (code) {
-        case '1':
-            return ''
         case '2':
             return 'abc'
         case '3':
@@ -19,10 +17,6 @@ const phraseDecode = codes => {
             return 'tuv'
         case '9':
             return 'wxyz'
-        case '*':
-            return ''
-        case '#':
-            return ''
         default:
             return ''
     }
@@ -31,6 +25,16 @@ const phraseDecode = codes => {
   return letterCode.join('')
 }
 
+const getMatchedWords = (dictionary, phraseCode) => {
+  const phraseLettersCode = phraseDecode(phraseCode)
+  const searchRegexp = new RegExp(`\\b[${phraseLettersCode.toLowerCase()}]+\\b(?![,])`)
+
+  return dictionary.filter(word => 
+    searchRegexp.test(word) && word.length === +phraseCode.length
+  );
+}
+
 module.exports = {
-  phraseDecode
+  phraseDecode,
+  getMatchedWords
 }
